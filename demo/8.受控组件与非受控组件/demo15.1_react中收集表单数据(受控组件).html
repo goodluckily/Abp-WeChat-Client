@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+        class FormDemo extends React.Component {
+            //初始化状态
+            state = {
+                username: "",
+                password: ""
+            }
+
+            render() {
+                return (
+                    <form method="get" onSubmit={this.handerSubmit}>
+                        用户名: <input onChange={this.onChangeName} name="username" type="text" />
+                        密  码: <input onChange={this.onChangePwd} name="password" type="password" />
+                        <button>提交</button>
+                    </form>
+                )
+            }
+            onChangeName = (event) => {
+                console.log(event.target.value);
+                this.setState({ username: event.target.value })
+            }
+            onChangePwd = (event) => {
+                this.setState({ password: event.target.value })
+            }
+            handerSubmit = (event) => {
+                //阻止表单的提交
+                event.preventDefault();
+                var { username, password } = this.state;
+                alert(`用户名:${username},密码:${password}`);
+            }
+        }
+
+        ReactDOM.render(<FormDemo />, document.getElementById("test"));
+
+        /*
+            现用现取的是受控组件
+            //解释
+            //能够省略很多的ref 的使用,且官网推荐尽量少用ref
+            //1.获取的值 维护在状态里面 且从状态里面取出来的 组件叫受控组件
+        */
+    </script>
+
+</body>
+
+
+</html>

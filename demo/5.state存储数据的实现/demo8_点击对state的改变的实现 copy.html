@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+        //初始化State
+        class WeatherDemo extends React.Component{
+            constructor(props)
+            {
+                super(props);
+                this.state = {isHost:false,wind:"微风"};
+                this.ThatWeatherChange = this.changeWeather.bind(this);
+                console.log(this);
+            }
+            render(){
+                var {isHost,wind} = this.state;
+                //注意
+                //如果构造函数不bind(this)的话 this将会为undefined
+                return <h1 onClick={this.ThatWeatherChange}>今天天气很{isHost?"炎热":"凉爽"},{wind}</h1>
+            }
+            //改变天气状态
+            changeWeather()
+            {
+                debugger
+                console.log(this)
+                const isHost = this.state.isHost;
+                //正确的写法  更新的动作为 合并的操作,不是替换!!!
+                this.setState({isHost:!isHost});
+
+                //严重注意:状态不可以直接更改!!!
+                // this.state.isHost = !isHost; 
+                console.log("点击了....");
+            }
+        }
+        ReactDOM.render(<WeatherDemo/>,document.getElementById("test"));
+
+        
+
+    </script>
+</body>
+</html>

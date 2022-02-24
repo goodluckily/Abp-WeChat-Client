@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <br/>
+    <br/>
+    <br/>
+    <div id="test1"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+
+        class CountA extends React.Component {
+
+            //构造器
+            constructor(porps) {
+                console.log("CountA---constructor");
+                super(porps);
+                //初始化状态
+                this.state = { num: 0 };
+            }
+
+            //自定义点击事件
+            AddNum = () => {
+                const { num } = this.state;
+                this.setState({ num: num + 1 });
+            }
+            Deat=()=>{
+                //卸载组件
+                ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+            }
+            Force=()=>{
+                //强制更新
+                this.forceUpdate();
+            }
+            //组件将要挂在的钩子
+            componentWillMount() {
+                console.log("CountA---componentWillMount");
+            }
+
+            //组件挂载(渲染)
+            render() {
+                console.log("CountA---render");
+                return (
+                    <div>
+                        <h1>输出的数字为:{this.state.num}</h1>
+                        <button onClick={this.AddNum}>点击+1</button>
+                        <button onClick={this.Deat}>卸载</button>
+                        <button onClick={this.Force}>不更改状态,强制更新一下</button>
+                    </div>
+                )
+            }
+
+            //组件挂载完毕的钩子
+            componentDidMount() {
+                console.log("CountA---componentDidMount");
+            }
+
+            //组件将要卸载时的钩子
+            componentWillUnmount(){
+                console.log("CountA---componentWillUnmount");
+            }
+        
+            //控制组件是否更新的阀门钩子
+            shouldComponentUpdate(){
+                console.log("CountA---shouldComponentUpdate");
+                return true;
+            }
+
+            //组件将要更新时的钩子
+            componentWilUpdate(){
+                console.log("CountA---componentWilUpdate");
+            }
+
+            //组件更新完毕时的钩子
+            componentDidUpdate(){
+                console.log("CountA---componentDidUpdate");
+            }
+
+        }
+
+        //渲染组件
+        ReactDOM.render(<CountA />, document.getElementById("test"));
+
+        //父组件
+        class CarA extends React.Component{
+            state = {CarName:"宝马"}
+            render(){
+                return(
+                    <div>
+                        <h1>组件CarA</h1>
+                        <button onClick={this.changeCar}>换车</button>
+                        <br />
+                        <CarB CarName={this.state.CarName} />
+                    </div>
+                )
+            }
+            changeCar=()=>{
+                const {CarName} = this.state;
+                this.setState({CarName:"奔驰"});
+            }
+        }
+
+        //子组件
+        class CarB extends React.Component{
+            render(){
+                console.log("CarB---render");
+                return(
+                    <div>
+                        <h1>组件CarB,我接受到的车是:{this.props.CarName}</h1>
+                    </div>
+                )
+            }
+
+            //组件将要接受参数的钩子
+            //!!! 初始化(第一次)的时候不会调用
+            componentWillReceiveProps(){
+                console.log("CarB---componentWillReceiveProps");
+            }
+
+            //之后的生命周期 同CountA组件后的是一致的
+
+        }
+
+        ReactDOM.render(<CarA />,document.getElementById("test1"));
+
+    </script>
+</body>
+
+</html>

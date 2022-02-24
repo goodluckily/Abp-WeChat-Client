@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+
+    <!-- 容器-->
+    <div id="test"></div>
+
+    <script type="text/babel">/* 注意此处 */
+
+        //1.创建类式组件
+        class HellowMessage extends React.Component {
+            render() {
+                return <div>Hellow Message</div>
+            }
+        }
+
+        //2.渲染组件到页面
+        ReactDOM.render(<HellowMessage />, document.getElementById("test"));
+
+
+        //注意   ReactDOM.render(<MyCompont/>.......... 做了什么
+        //.组件名称首字母需要大写
+        //1.React 解析组件标签 找到名称类,
+        //2.发现是类定义的话,然后new出该类的实例.并通过该实例调用原型上的render方法,
+        //3.将render返回的虚拟Dom转换为真实Dom,随后呈现在页面中
+
+    </script>
+
+</body>
+
+</html>

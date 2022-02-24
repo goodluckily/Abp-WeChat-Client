@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test1"></div> <!-- 容器-->
+    <div id="test2"></div> <!-- 容器-->
+    <div id="test3"></div> <!-- 容器-->
+    <div id="test4"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+        class Student extends React.Component
+        {
+           render()
+           {
+               console.log(this);
+               const {name,age,sex} = this.props;
+               return (
+                   <ul>
+                        <li>姓名: {name}</li>
+                        <li>年龄: {age}</li>
+                        <li>性别: {sex}</li>
+                   </ul>
+               )
+           }     
+        }
+
+        ReactDOM.render(<Student name="张三" age="18" sex="男"/>,document.getElementById("test1"));
+        ReactDOM.render(<Student name="李四" age="19" sex="男"/>,document.getElementById("test2"));
+        ReactDOM.render(<Student name="王五" age="20" sex="男"/>,document.getElementById("test3"));
+
+        const st = {name:'赵六',age:'21',sex:'男'};
+        ReactDOM.render(<Student {...st} />,document.getElementById("test4"));
+    </script>
+</body>
+</html>

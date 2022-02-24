@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+        class DemoTest extends React.Component {
+            changeWather = () => {
+                console.log("changeWather", this);
+                const { isHot } = this.state;
+                this.setState({ isHot: !isHot })
+            }
+            //这样切换住状态时 就不会执行两次了(相较于函数写在里面)
+            saveInput = (c) => {
+                this.input2 = c;
+                console.log("input2", c)
+            }
+            state = { isHot: false };
+            render() {
+                //在状态更新时,会调用两次 函数里面的方法 一次为null 一次为真实Dom
+                //例子
+                //input2 null
+                const { isHot } = this.state;
+                return (
+                    <div>
+                        <input ref={this.saveInput}  type="text" />
+                        {/*<input ref={(c) => { this.input2 = c; console.log("input2",c)}}  />*/}
+
+                        <h1>今天天气很{isHot ? "炎热" : "凉爽"}</h1>
+                        <button onClick={this.changeWather}>点击切换天气</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<DemoTest />, document.getElementById("test"));
+    </script>
+</body>
+
+</html>

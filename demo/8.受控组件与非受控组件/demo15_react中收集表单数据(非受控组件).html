@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+        class FormDemo extends React.Component {
+            render() {
+                return (
+                    /*
+                        event.preventDefault();阻止后,Action会失效 
+                        action="https://www.baidu.com/" 
+                    */
+                    <form method="get" onSubmit={this.handerSubmit}>
+                        用户名: <input ref={(c) => { this.nameHtml = c; }} name="username" type="text" />
+                        密  码: <input ref={(c) => { this.pwdHtml = c; }} name="password" type="password" />
+                        <button>提交</button>
+                    </form>
+                )
+            }
+            handerSubmit = (event) => {
+                //阻止表单的提交
+                event.preventDefault();
+                var { nameHtml, pwdHtml } = this;
+                alert(`用户名:${nameHtml.value},密码:${pwdHtml.value}`);
+            }
+        }
+
+        ReactDOM.render(<FormDemo />, document.getElementById("test"));
+        
+        /*
+            现用现取的是非受控组件
+            //解释
+            //用的时候才调用且调用的时候才取数据进行处理的组件 叫非受控组件
+        */
+    </script>
+
+</body>
+
+
+</html>

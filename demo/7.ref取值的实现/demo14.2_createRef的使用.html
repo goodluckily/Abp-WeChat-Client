@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+        class DemoTest extends React.Component {
+            
+            //尽量不要过度使用Ref
+            input1 = React.createRef()//专人专项
+            input2 = React.createRef()//专人专项
+
+            showData1 = () => {
+                console.log("data1", this.input1.current.value);
+                alert(this.input1.current.value)
+            }
+            showData2 = () => {
+                console.log("data2", this.input2.current.value);
+                alert(this.input2.current.value)
+            }
+
+            //可以省略掉 ref (条件: 发生时间的元素,刚好是你需要操作的元素)
+            showData3 = (event) => {
+                console.log("data3", event.target);
+                alert(event.target.value);
+            }
+
+            render() {
+                return (
+                    <div>
+                        <input ref={this.input1} type="text" placeholder="请输入数据" />
+                        <button onClick={this.showData1} >点击获取左侧输入</button><br/>
+                        <input ref={this.input2} onBlur={this.showData2} type="text" placeholder="失去焦点" /><br/>
+                        <input  onBlur={this.showData3} type="text" placeholder="失去焦点(event)" />
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<DemoTest />, document.getElementById("test"));
+    </script>
+</body>
+
+</html>

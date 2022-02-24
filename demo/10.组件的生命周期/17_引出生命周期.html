@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+        class Lifes extends React.Component{
+            state = {opacity:1}
+
+            //组件挂在完毕后
+            componentDidMount(){
+               this.timer = setInterval(()=>{
+                    let {opacity} = this.state;
+                    opacity -= 0.1;
+                    //制造循环
+                    if(opacity<=0) opacity = 1;
+                    this.setState({opacity});
+                },200)
+            }
+
+            //初始化渲染---状态更新后
+            render(){
+                return(
+                    <div>
+                        <h1 style={{opacity:this.state.opacity}}>React学不会怎么办?</h1>
+                        <button onClick={this.changeLife}>不活了</button>
+                    </div>
+                )
+            }
+            
+            //组件将要被卸载的事件
+            componentWillUnmount(){
+                //关闭定时器
+                clearTimeout(this.timer);
+            }
+            
+            //自己定义点击事件
+            changeLife=()=>{
+                //卸载组件事件
+                ReactDOM.unmountComponentAtNode(document.getElementById("test"));
+            }
+        }
+
+
+        ReactDOM.render(<Lifes/>,document.getElementById("test"))
+    </script>
+</body>
+</html>

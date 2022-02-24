@@ -16,6 +16,10 @@
             background-color: orangered;
             width: 200px;
         }
+        .title1 {
+            background-color: yellow;
+            width: 200px;
+        }
     </style>
 </head>
 
@@ -40,23 +44,25 @@
                 <h2 className="title" id={myid.toLowerCase()}>
                     <span style={{ color: "green", fontSize: "30px" }}>{myData.toLowerCase()}</span>
                 </h2>
-                <h2 className="title" id={myid.toLowerCase() + "1"}>
+                <h2 className="title1" id={myid.toLowerCase() + "1"}>
                     <span style={{ color: "green", fontSize: "30px" }}>{myData.toLowerCase()}</span>
                 </h2>
                 <input type="text"/>
                 <good>测试6.1</good>
-                <Good>测试6.2</Good>
             </div>
         )
+
+        //这样一般是组件
+        //<Good>测试6.2</Good>
 
         ReactDOM.render(dom, document.getElementById("test"));
 
         //jsx 語法 总结规范
         //1. 虛擬dom里面的变量需要 {} 來使用
         //2. 外部class 樣式 需要使用 className='name'
-        //3. 內嵌style 樣式 {} 表示需要使用js語法 再加一各 表示使用的是對象 複雜的需要使用 小駝峰命名方式
+        //3. 內嵌style 樣式 {{}} 表示需要使用js語法 再加一各 表示使用的是對象 内联的需要使用 小駝峰命名方式
         //4. 虛擬dom 必須只能有一個根目录
-        //5. 虛擬dom 里面 biaoqian 必須闭合
+        //5. 虛擬dom 里面 标签 必須闭合
         //6. 标签首字母
         //  6.1 小写字母开头 直接转化为真实Dom中同名的标签元素 无该标签对应时 则报错
         //  6.2 大写字母开头 React则去渲染对应的组件 若组件没有定于 则报错
