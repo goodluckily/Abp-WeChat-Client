@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Hello React!</title>
+    <!--引入react的核心库-->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!--引入react-dom 用于支持react操作dom-->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!--用户将jsx 转为 js-->
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="test"></div> <!-- 容器-->
+    <script type="text/babel">/* 注意此处 指定的babel*/
+
+        //Diffing 算法的最先粒度是 --> 标签
+        //嵌套层级里面的都会去对比
+        
+        class Time extends React.Component {
+            state = { thisDate: new Date() };
+            componentDidMount() {
+                setInterval(() => {
+                    this.setState({ thisDate: new Date() });
+                }, 1000)
+            }
+            render(){
+                return (
+                    <div>
+                        <h1>Hello</h1>
+                        <input type="text" />
+                        <div>现在的时间是:{this.state.thisDate.toTimeString()}</div>
+                    </div>
+                )
+            }
+        }
+        
+        ReactDOM.render(<Time/>,document.getElementById("test"));
+    </script>
+</body>
+
+</html>
