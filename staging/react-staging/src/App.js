@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-
+import Hellow from "./components/Hello/Hello.js"
 function App() {
   return (
     <div className="App">
@@ -15,8 +15,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React!!!!!
         </a>
+        <Hellow />
       </header>
     </div>
   );
