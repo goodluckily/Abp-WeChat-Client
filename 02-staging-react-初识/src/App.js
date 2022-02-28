@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Hellow from "./components/Hello/Hello.js"
+import Hellow from "./components/Hello/Hello"
+import Title from './components/Title/Title';
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
           Learn React!!!!!
         </a>
         <Hellow />
+        <Title />
       </header>
     </div>
   );
