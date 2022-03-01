@@ -1,0 +1,17 @@
+.list{
+    height: 400px;
+    overflow: auto;
+    margin-top: 20px;
+}
+.list div{
+    border: 1px solid;
+    border-color: black;
+    margin-bottom: 10px;
+    background-color:aliceblue;
+    float: left;
+    margin-left: 20px;
+}
+.list div p{
+    text-align: center;
+    color: blue;
+}
