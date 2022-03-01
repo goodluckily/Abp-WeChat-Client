@@ -18,6 +18,9 @@
         class DemoTest extends React.Component {
             changeWather = () => {
                 console.log("changeWather", this);
+                console.log("input2", this.input2);
+                debugger
+                console.log("input2 Value", this.input2.value);
                 const { isHot } = this.state;
                 this.setState({ isHot: !isHot })
             }
@@ -28,7 +31,7 @@
             }
             state = { isHot: false };
             render() {
-                //在状态更新时,会调用两次 函数里面的方法 一次为null 一次为真实Dom
+                //在状态更新时,会调用两次 函数里面的方法 一次为null 一次为真实Dom  (注释类容)
                 //例子
                 //input2 null
                 const { isHot } = this.state;
@@ -42,6 +45,8 @@
                     </div>
                 )
             }
+
+
         }
 
         ReactDOM.render(<DemoTest />, document.getElementById("test"));
