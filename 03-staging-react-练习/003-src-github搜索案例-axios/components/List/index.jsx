@@ -1,18 +1,9 @@
 import React, { Component } from "react"
-import PubSub from "pubsub-js"
 import "./index.css"
 
 class List extends Component {
-    state = { //初始化状态
-        users: [],
-        isFirst: true,
-        isLoading: false,
-        isError: false,
-        errorMsg: ""
-    };
-
     render() {
-        const { users, isFirst, isLoading, isError, errorMsg } = this.state;
+        const { users, isFirst, isLoading, isError, errorMsg } = this.props;
         console.log(this.props);
         return (
             isFirst ? <h1>欢迎开始使用,请输入内容开始搜索!</h1> :
@@ -34,18 +25,5 @@ class List extends Component {
                         </div>
         )
     }
-
-    componentDidMount() {
-        //订阅
-        this.testToken = PubSub.subscribe("test", (msg, dataObj) => {
-            this.setState(dataObj);
-        });
-    }
-
-
-    componentWillUnmount(){
-        PubSub.unsubscribe(this.testToken);
-    }
-
 }
 export default List;

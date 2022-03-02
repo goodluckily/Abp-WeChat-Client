@@ -2,15 +2,20 @@
 import React, { Component } from 'react'
 import Search from "./components/Search"
 import List from "./components/List"
-import PubSub from "pubsub-js"
 
 export default class App extends Component {
-  
+  state = { //初始化状态
+    users: [],
+    isFirst:true,
+    isLoading:false,
+    isError:false,
+    errorMsg:""
+   };
   render() {
     return (
       <div>
-        <Search/>
-        <List/>
+        <Search updateAppState={this.updateAppState} />
+        <List {...this.state} />
       </div>
     )
   }
