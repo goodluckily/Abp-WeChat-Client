@@ -50,11 +50,11 @@ export default class App extends Component {
             </div> */}
 
             {/* 自己在封装一层 children="" 等同于在标签体里面使用*/}
-            <MyNavLink to="/about/a/b" a={1}>
+            <MyNavLink to="/cy/about" a={1}>
               About
             </MyNavLink>
             {/* <MyNavLink to="/home">Home</MyNavLink> */}
-            <MyNavLink to="/home/a/b" children="Home1" />
+            <MyNavLink to="/cy/home" children="Home1" />
           </div>
           <div className="col-xs-6">
             <div className="panel">
@@ -65,10 +65,10 @@ export default class App extends Component {
                 <Route path="/home" component={Home} />
                 */}
 
-                {/* 找到组件就停止 且 exact属性开启严格匹配 默认左靠匹配原则*/}
+                {/* 找到组件就停止 */}
                 <Switch>
-                  <Route path="/about" component={About} exact/>
-                  <Route path="/home" component={Home} />
+                  <Route path="/cy/about" component={About} />
+                  <Route path="/cy/home" component={Home} />
                 </Switch>
               </div>
             </div>

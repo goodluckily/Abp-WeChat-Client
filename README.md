@@ -42,3 +42,11 @@
 2. 标签体内容是一个特殊的标签 ==Children==
 3. 通过 this.porps.children 可以得到标签体里面的内容
 
+
+
+#### 解决多级页面刷新样式丢失的问题
+
+1. public/index.html 中 引用样式时不写 ./ 写 ==/常用==
+2. public/index.html 中 引用样式时不写 ./ 写 ==%PUBLIC_URL%/==
+3. 使用 HashRouter
+
