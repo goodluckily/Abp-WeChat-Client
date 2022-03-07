@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\demo"
+    "\\03-staging-react-练习",
+    "\\03-staging-react-练习\\src",
+    "\\03-staging-react-练习\\src\\pages",
+    "\\03-staging-react-练习\\src\\pages\\Home"
   ],
+  "SelectedNode": "\\03-staging-react-练习\\src\\pages\\Home\\index.jsx",
   "PreviewInSolutionExplorer": false
 }
