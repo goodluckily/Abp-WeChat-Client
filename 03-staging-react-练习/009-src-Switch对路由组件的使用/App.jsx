@@ -51,11 +51,11 @@ export default class App extends Component {
             </div> */}
 
             {/* 自己在封装一层 children="" 等同于在标签体里面使用*/}
-            <MyNavLink to="/cy/about" a={1}>
+            <MyNavLink to="/about" a={1}>
               About
             </MyNavLink>
             {/* <MyNavLink to="/home">Home</MyNavLink> */}
-            <MyNavLink to="/cy/home" children="Home1" />
+            <MyNavLink to="/home" children="Home1" />
           </div>
           <div className="col-xs-6">
             <div className="panel">
@@ -68,8 +68,9 @@ export default class App extends Component {
 
                 {/* 找到组件就停止 */}
                 <Switch>
-                  <Route path="/cy/about" component={About} />
-                  <Route path="/cy/home" component={Home} />
+                  <Route path="/about" component={About} />
+                  <Route path="/home" component={Home} />
+                  <Route path="/home" component={Test} />
                 </Switch>
               </div>
             </div>
