@@ -50,6 +50,3 @@ class List extends Component {
 
 }
 export default List;
-
-
-// Promise  需要掌握
