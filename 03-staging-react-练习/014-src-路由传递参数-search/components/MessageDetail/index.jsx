@@ -18,7 +18,7 @@ export default class MessageDetail extends Component {
     // console.log(search);
 
 
-    //003-接受state参数
+    //003-接受state参数111
     var {state} = this.props.location.state;
     return (
       <div>
