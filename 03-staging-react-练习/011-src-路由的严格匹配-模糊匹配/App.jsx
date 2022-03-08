@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-
-import { BrowserRouter, Route, Link, NavLink, Switch, Redirect } from "react-router-dom";
-
+import { BrowserRouter, Route, Link, NavLink, Switch } from "react-router-dom";
 import About from "./pages/About"; //路由组件
 import Home from "./pages/Home"; //路由组件
 import Header from "./components/Header"; //一般组件
@@ -52,11 +50,11 @@ export default class App extends Component {
             </div> */}
 
             {/* 自己在封装一层 children="" 等同于在标签体里面使用*/}
-            <MyNavLink to="/about" a={1}>
+            <MyNavLink to="/about/a/b" a={1}>
               About
             </MyNavLink>
             {/* <MyNavLink to="/home">Home</MyNavLink> */}
-            <MyNavLink to="/home" children="Home1" />
+            <MyNavLink to="/home/a/b" children="Home1" />
           </div>
           <div className="col-xs-6">
             <div className="panel">
@@ -69,11 +67,8 @@ export default class App extends Component {
 
                 {/* 找到组件就停止 且 exact属性开启严格匹配 默认左靠匹配原则*/}
                 <Switch>
-                  <Route path="/about" component={About} />
+                  <Route path="/about" component={About} exact/>
                   <Route path="/home" component={Home} />
-
-                  {/* 用来兜底的路由控制 默认的相当于重定向的是 / 的路由地址 */}
-                  <Redirect to="/about" />
                 </Switch>
               </div>
             </div>
