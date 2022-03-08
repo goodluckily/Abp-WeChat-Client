@@ -5,9 +5,9 @@ import MessageDetail from "../../../components/MessageDetail";
 export default class Message extends Component {
   state = {
     arrMesasage: [
-      { id: "01", title: "消息1" },
-      { id: "02", title: "消息2" },
-      { id: "03", title: "消息3" },
+      { id: "01", title: "消息1111" },
+      { id: "02", title: "消息2222" },
+      { id: "03", title: "消息3333" },
     ],
   };
   render() {
