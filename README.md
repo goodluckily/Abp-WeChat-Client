@@ -93,4 +93,29 @@
    const { params } = this.props.match;
    ```
 
+2. Search传递参数
+
+   ```C#
+   //传递有点像query传递
+    <Link to={`/home/message/detail/?id=${item.id}&title=${item.title}`} children={item.title} />
+   //注册 无需接受,正常注册路由即可
+   <Route path="/home/message/detail" component={MessageDetail} />
+   //接受比较麻烦,需要把 ?aa=11&bb=22 改为对象
+   const data = this.props.location.search;
+   const param = data.slice(1);
+   const search = qs.parse(param);//qs是包解析 import qs from "querystring";
+   ```
+
+3. state参数(注意是路由组件里面的)
+
+   ```C#
+   
+   
+   
+   
+   
+   
+   
+   ```
+
    
