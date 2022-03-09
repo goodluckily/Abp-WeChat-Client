@@ -19,14 +19,14 @@ export default class MessageDetail extends Component {
 
 
     //003-接受state参数111
-    var {state} = this.props.location.state;
+    var {state} = this.props.location;
     return (
       <div>
         <ul>
           {/* <li>Id: {params.id}</li>
           <li>标题: {params.title}</li> */}
-          <li>Id: {state.id}</li>
-          <li>标题: {state.title}</li>
+          <li>Id1: {state.id}</li>
+          <li>标题1: {state.title}</li>
         </ul>
       </div>
     );
