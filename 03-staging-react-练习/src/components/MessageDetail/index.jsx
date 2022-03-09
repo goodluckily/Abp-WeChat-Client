@@ -16,7 +16,7 @@ export default class MessageDetail extends Component {
     // const param = data.slice(1);
     // const search = qs.parse(param);
     // console.log(search);
-    debugger;
+
     //003-接受state参数
     const { state } = this.props.location;
     return (
