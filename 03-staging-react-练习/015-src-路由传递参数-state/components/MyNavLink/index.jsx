@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
 class MyNavLink extends Component {
-  var;
   render() {
     // const { title } = this.props;
     return (
