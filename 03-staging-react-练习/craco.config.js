@@ -8,11 +8,11 @@ module.exports = {
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: { "@primary-color": "#1DA57A" },
-            // modifyVars: getThemeVariables({
-            //   dark: true, // 开启暗黑模式
-            //   compact: true, // 开启紧凑模式
-            // }),
+            // modifyVars: { "@primary-color": "#1DA57A" },
+            modifyVars: getThemeVariables({
+              dark: false, // 开启暗黑模式
+              compact: false, // 开启紧凑模式
+            }),
             javascriptEnabled: true,
           },
         },
