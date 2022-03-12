@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { Button, Select } from "antd";
-import store from "../redux/store";
-
+import store from "../../redux/store";
+// import { Day } from "../../redux/count_action.ts";
 const { Option } = Select;
 
 export default class Count extends Component {
   state = { num: 1 };
   render() {
+    // console.log(Day["SATURDAY"]);
+    // console.log(Day[Day.SATURDAY]);
     return (
       <div>
         <h1>当前求和为:{store.getState()}</h1>
