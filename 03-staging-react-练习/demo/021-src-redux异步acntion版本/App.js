@@ -3,8 +3,7 @@ import "./App.less";
 
 import { Layout, Menu, Breadcrumb } from "antd";
 import { UserOutlined, LaptopOutlined, NotificationOutlined } from "@ant-design/icons";
-import Count from "./containers/Count"; //容器组件
-import store from "./redux/store";
+import Count from "./components/Count";
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -68,7 +67,7 @@ export default class App extends Component {
                 margin: 0,
                 minHeight: 280,
               }}>
-              <Count store={store}></Count>
+              <Count></Count>
             </Content>
           </Layout>
         </Layout>

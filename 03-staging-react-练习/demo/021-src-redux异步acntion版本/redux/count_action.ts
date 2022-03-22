@@ -15,10 +15,11 @@
 // import store  from "./store"
 import countReducer from "./count_reducer"
 
-export const createJiaAysnc = (data,time)=>{
-    return (dispatch)=>{
-        setTimeout(()=>{
+export const createJiaAysnc=(data,time)=>{
+    return ()=>{
+        setTimeout((dispatch)=>{
             // store.dispatch(countReducer(0,data));
+
             //可以直接获取得到
             dispatch(countReducer(0,data));
         },time)
